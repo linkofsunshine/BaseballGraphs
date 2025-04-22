@@ -6,6 +6,6 @@ Selentest.py is used to scrape Fangraphs for WAR data (I will soon add FIP scrap
 
 I've just been asking ChatGPT to organize the Selentest.py result into the right format (will automate this soon)
 
-For the R graph, need to manually change the name positions, will automate this in a later update
+For the R graph, need to manually change the name positions (inluding it's date location), will automate this in a later update
 
 For the Python graph, you need some minor adjusting of name positions.
