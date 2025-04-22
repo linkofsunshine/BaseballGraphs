@@ -4,7 +4,7 @@ Generally, my RE24 graphs have been made with R, and my WAR graphs with Python. 
 
 Selentest.py is used to scrape Fangraphs for WAR data (I will soon add FIP scraping, but you can just change the url and the end date). Fangraphs is a little finnicky, be patient.
 
-I've just been asking ChatGPT to organize the Selentest.py result into the right format (will automate this soon)
+I've just been asking ChatGPT to organize the Selentest.py result into the correct format [see example CSV] (will automate this soon)
 
 For the R graph, need to manually change the name positions (inluding it's date location), will automate this in a later update
 
