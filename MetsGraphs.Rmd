@@ -1,0 +1,57 @@
+---
+title: "RStudio"
+output: html_document
+---
+```{r}
+devtools::install_github("cdalzell/Lahman", ref="2021-data-update")
+library(baseballr)
+library(dplyr)
+library(ggrepel)
+library(ggfx)
+library(tidyverse)
+library(data.table)
+library(readxl)
+library(gganimate)
+library(httr)
+library(patchwork)
+library(tigris)
+library(sf)
+library(xfun)
+devtools::install_github("lenkiefer/darklyplot")
+#my experimental package (needed for theme_dark2)
+library(darklyplot)
+
+# load my color scales
+source("http://lenkiefer.com/img/favorites/len_color_scales.R")
+```
+
+
+
+```{r}
+bballsp <- read.csv(file="bballsp.csv", header = TRUE)
+bballsp
+```
+
+```{r}
+
+ggplot(data=bballsp, aes(x=Week)) +
+  darklyplot::theme_dark2() +
+  with_outer_glow(geom_line(aes(y=Diaz), size=1.3, color="cyan", group=1)) +
+  with_outer_glow(geom_line(aes(y=Garrett), size=1.3, colour="red", group=1)) +
+  with_outer_glow(geom_line(aes(y=Minter), size=1.3, colour="light blue", group=1)) +
+  with_outer_glow(geom_line(aes(y=Brazoban), size=1.3, colour="gray", group=1)) +
+  with_outer_glow(geom_line(aes(y=Stanek), size=1.3, colour="white", group=1)) +
+  with_outer_glow(geom_line(aes(y=Young), size=1.3, colour="yellow", group=1)) +
+  with_outer_glow(geom_line(aes(y=Butto), size=1.3, colour="orange", group=1)) +
+  with_outer_glow(geom_line(aes(y=Kranick), size=1.3, colour="light green", group=1)) +
+  labs(x="Week", y="RE24", title="Total Runs Saved:", caption="Source: Fangraphs") +
+  geom_text(aes(x="4/13", y=-2.3), color="cyan", label='Diaz', size=4, position=position_nudge(x=-.4)) +
+  geom_text(aes(x="4/13", y=4.5), color="red", label='Garrett', size=4, position=position_nudge(x=-.25)) +
+  geom_text(aes(x="4/13", y=2.2), color="light blue", label='Minter', size=4, position=position_nudge(x=-.3)) +
+  geom_text(aes(x="4/13", y=3.2), color="gray", label='Brazoban', size=4, position=position_nudge(x=-.1)) +
+  geom_text(aes(x="4/13", y=1.1), color="white", label='Stanek', size=4, position=position_nudge(x=-.3)) +
+  geom_text(aes(x="4/13", y=-.7), color="yellow", label='Young', size=4, position=position_nudge(x=-.1)) +
+  geom_text(aes(x="4/13", y=1.75), color="orange", label='Butto', size=4, position=position_nudge(x=-.25)) +
+  geom_text(aes(x="4/13", y=6.5), color="light green", label='Kranick', size=4, position=position_nudge(x=-.2))
+
+```
